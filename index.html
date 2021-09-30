@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src='./cr4.js'></script>
+    <script type="text/javascript" src="https://travistidwell.com/jsencrypt/bin/jsencrypt.js"></script>
+</head>
+<body>
+    <div class="container"> 
+        <div class="panel panel-default">
+              <div class="panel-heading">
+                    <h1 class="panel-title">RC4</h1>
+              </div>
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-6">
+                          <h4>Encrypte Process</h4>
+                        <form class="form-horizontal" method="get">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Plantext</label>
+                                <div class="col-sm-9">
+                                    <input value="Hello" id="message" type="text" class="form-control" placeholder="Enter plantext">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Key</label>
+                                <div class="col-sm-9">
+                                    <input id="key" value="qwerty" type="text" class="form-control" placeholder="Enter key">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label"></label>
+                                <div class="col-sm-9">
+                                    <button id="btnEncrypte" type="button" class="btn btn-primary pull-right" >Encrypte</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Result</label>
+                                <div class="col-sm-9">
+                                    <h4 id='hash'></h4>
+                                </div>
+                            </div>
+                        </form>    
+                      </div>
+                      <div class="col-6">
+                        <h4>Decrypte Process</h4>
+                        <form class="form-horizontal" method="get">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Encrypted</label>
+                                <div class="col-sm-9">
+                                    <input id="crypted" type="text" class="form-control" placeholder="Enter Encrypted">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Key</label>
+                                <div class="col-sm-9">
+                                    <input id="key1"  type="text" class="form-control"  placeholder="Enter key">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label"></label>
+                                <div class="col-sm-9">
+                                    <button id="btnDecrypt" type="button" class="btn btn-primary pull-right">Decrypte</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Result</label>
+                                <div class="col-sm-9">
+                                    <h4 id='hash1'></h4>
+                                </div>
+                            </div>
+                        </form>  
+                      </div>
+                  </div> 
+              </div>
+        </div>   
+    </div>
+    <hr> 
+    <div class="container"> 
+        <div class="panel panel-default">
+              <div class="panel-heading">
+                    <h1 class="panel-title">RSA</h1>
+              </div>
+              <div class="panel-body">
+                  <div class="row">
+                    <div class="col-12">
+                        <button type="button" id="btnCreateTwoKey1024" class="btn btn-danger" >Tạo Public, Private Key (1024 bit)</button>
+                        <button type="button" id="btnCreateTwoKey2048" class="btn btn-danger" >Tạo Public, Private Key (2048 bit)</button>
+                        <p id="textOfTwoKey"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-6">
+                          <h4>Encrypte Process</h4>
+                        <form class="form-horizontal" method="get">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Plantext</label>
+                                <div class="col-sm-9">
+                                    <input id="messageRsa" type="text" class="form-control" placeholder="Enter plantext">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Public Key</label>
+                                <div class="col-sm-9">
+                                    <textarea style="height: 200px" id="keypublic"  class="form-control" placeholder="Enter public key"></textarea>   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label"></label>
+                                <div class="col-sm-9">
+                                    <button id="btnEncrypteRsa" type="button" class="btn btn-primary pull-right" >Encrypte</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Result</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" style="height: 500px" id='resultCreateRsa'></textarea>
+                                </div>
+                            </div>
+                        </form>    
+                      </div>
+                      <div class="col-6">
+                        <h4>Decrypte Process</h4>
+                        <form class="form-horizontal" method="get">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Encrypted</label>
+                                <div class="col-sm-9">
+                                    <input id="messagecipher" type="text" class="form-control" placeholder="Enter Encrypted">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Private Key</label>
+                                <div class="col-sm-9">
+                                    <textarea id="keyprivate" style="height: 200px"  class="form-control"  placeholder="Enter Private key"></textarea>   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label"></label>
+                                <div class="col-sm-9">
+                                    <button id="btnDecrypteRsa" type="button" class="btn btn-primary pull-right">Decrypte</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Result</label>
+                                <div class="col-sm-9">
+                                    <h4 id='resultDecryteRsa'></h4>
+                                </div>
+                            </div>
+                        </form>  
+                      </div>
+                  </div> 
+              </div>
+        </div>   
+    </div>
+    <script>
+        var message = document.getElementById("message");
+        var key = document.getElementById("key");
+        var crypted = document.getElementById("crypted");
+        var key1 = document.getElementById("key1");
+        var hash = document.getElementById('hash');
+        var hash1 = document.getElementById('hash1');
+        var messageRsa = document.getElementById('messageRsa');
+        var messagecipher = document.getElementById('messagecipher');
+        var keypublic = document.getElementById("keypublic");
+        var keyprivate = document.getElementById("keyprivate");
+        var resultCreateRsa = document.getElementById("resultCreateRsa");
+        var resultDecryteRsa = document.getElementById("resultDecryteRsa");
+        var textOfTwoKey = document.getElementById("textOfTwoKey");
+        var btnEncrypte = document.getElementById("btnEncrypte");
+        var btnEncrypteRsa = document.getElementById("btnEncrypteRsa");
+        var btnDecrypteRsa = document.getElementById("btnDecrypteRsa");
+        var btnCreateTwoKey1024 = document.getElementById("btnCreateTwoKey1024");
+        var btnCreateTwoKey2048 = document.getElementById("btnCreateTwoKey2048");
+
+        btnEncrypte.onclick = function(){
+            console.log(message.value);
+            var crypted = CryptoJS.RC4.encrypt(message.value, key.value);
+            hash.innerHTML = crypted
+        }
+        btnDecrypt.onclick = function(){
+            var plain = CryptoJS.RC4.decrypt(crypted.value, key1.value);
+            hash1.innerHTML = plain
+        }
+        btnEncrypteRsa.onclick = function(){
+            trsa(messageRsa.value,keypublic.value)
+        }
+        btnDecrypteRsa.onclick = function(){
+            drsa(messagecipher.value,keyprivate.value)
+        }
+
+        btnCreateTwoKey1024.onclick = function(){
+            createTwoKey(1024,textOfTwoKey)
+        }
+        btnCreateTwoKey2048.onclick = function(){
+            createTwoKey(2048,textOfTwoKey)
+        }
+      
+        function trsa(word,keypublic) {
+            var dt = new Date();
+            var time = -(dt.getTime());
+            // var crypt = new JSEncrypt({ default_key_size: 1024 });
+            var crypt = new JSEncrypt();
+            // crypt.getKey();
+            crypt.setPublicKey(keypublic);
+            // document.getElementById("resultPublicAndPrivateKey").innerHTML="";
+            // document.getElementById("resultPublicAndPrivateKey").innerHTML += 'Key generated in ' + time + ' ms';
+            // document.getElementById("resultPublicAndPrivateKey").innerHTML += "<br>Private key:" +crypt.getPrivateKey();
+            // document.getElementById("resultPublicAndPrivateKey").innerHTML += "<br>Public key:" +crypt.getPublicKey();
+            var cipher = crypt.encrypt(word);
+            // var decipher = crypt.decrypt(cipher);
+            dt = new Date();
+            time += (dt.getTime());
+            document.getElementById("resultCreateRsa").innerHTML="";
+            document.getElementById("resultCreateRsa").innerHTML += 'Encrypt/decrypt in ' + time + ' ms';
+            document.getElementById("resultCreateRsa").innerHTML += "\nText:\t" +word;
+            document.getElementById("resultCreateRsa").innerHTML += "\nEncrypt with public key:\t" +cipher;
+            // document.getElementById("hashRsa").innerHTML += "\nDecrypt with private key:\t"+ decipher;  
+        }
+       
+        function drsa(cipher,privatekey) {
+            var crypt = new JSEncrypt();
+            crypt.setPrivateKey(privatekey);
+            var decipher = crypt.decrypt(cipher);
+            resultDecryteRsa.innerHTML=decipher;
+        }
+        function createTwoKey(keySize,element){
+            var dt = new Date();
+            var time = -(dt.getTime());
+            var crypt = new JSEncrypt({ default_key_size: keySize });
+            crypt.getKey();
+            element.innerHTML="";
+            element.innerHTML += 'Key generated in ' + time + ' ms';
+            element.innerHTML += "<br>Private key:" +crypt.getPrivateKey();
+            element.innerHTML += "<br>Public key:" +crypt.getPublicKey();
+        }
+
+    </script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+</body>
+</html>
+
